@@ -1,4 +1,10 @@
 ---
+- name: Install firewalld
+  yum: name={{ item }} state=latest
+  with_items:
+    - firewalld
+    - ipset
+
 - name: Start and enable firewalld
   service: name=firewalld state=started enabled=yes
 
