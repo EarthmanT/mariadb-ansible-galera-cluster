@@ -10,3 +10,16 @@
     host: "localhost"
     password: "{{ galera_sst_pass }}"
     priv: "*.*:RELOAD,LOCK TABLES,REPLICATION CLIENT"
+
+- name: Create new database user.
+  mysql_user:
+    name: "{{ new_database_user }}"
+    host: '*'
+    password: "{{ new_database_password }}"
+    priv: '*.*:ALL'
+    state: present
+
+- name: Create a new database
+  mysql_db:
+    name: "{{ new_database_name }}"
+    state: present
