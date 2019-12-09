@@ -11,14 +11,14 @@
   with_items:
     - percona-xtrabackup
     - socat
-  when: "mariadb_release | version_compare('10.2', '<')"
+  when: "mariadb_release is version('10.2', '<')"
 
 - name: Install percona-xtrabackup-24 packages
   yum: name={{ item }} state=present
   with_items:
     - percona-xtrabackup-24
     - socat
-  when: "mariadb_release | version_compare('10.2', '>=')"
+  when: "mariadb_release is version('10.2', '>=')"
 
 - name: Install MySQL-python
   yum: name=MySQL-python state=present
